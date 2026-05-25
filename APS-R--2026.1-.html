@@ -2881,13 +2881,13 @@ Laura Borri Magro –
 <a href="mailto:laurabm1@al.insper.edu.br">laurabm1@al.insper.edu.br</a><br>
 Pedro Henrique Lima Zimmermann –
 <a href="mailto:pedrohlz@al.insper.edu.br">pedrohlz@al.insper.edu.br</a><br>
-Mariam Eduarda Mesquita Netto de Faria –
+Maria Eduarda Mesquita Netto de Faria –
 <a href="mailto:mariaemnf@al.insper.edu.br">mariaemnf@al.insper.edu.br</a>
 </p>
 </div></h4>
 <h4 class="date"><div style="text-align: center; margin-top: 20px;">
 <p>
-<strong>São Paulo – 24/05/2026</strong>
+<strong>São Paulo – 25/05/2026</strong>
 </p>
 </div></h4>
 
@@ -3218,140 +3218,141 @@ Tratamento das Bases</h2>
 <span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a>           <span class="fu">str_replace_all</span>(<span class="st">&quot;[^A-Z0-9 ]&quot;</span>, <span class="st">&quot; &quot;</span>) <span class="sc">|&gt;</span></span>
 <span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a>           <span class="fu">str_squish</span>(),</span>
 <span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a>         <span class="at">iso_a3 =</span> <span class="fu">unname</span>(pais_iso3[pais_limpo])) <span class="sc">|&gt;</span></span>
-<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a>  <span class="fu">select</span>(icao, iata, nome_aeroporto, municipio, estado, pais, iso_a3, aeronave_critica, latitude, longitude) <span class="sc">|&gt;</span></span>
-<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">icao =</span> <span class="st">&quot;Código ICAO do Aeródromo (4 Letras)&quot;</span>,</span>
-<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a>                      <span class="at">iata =</span> <span class="st">&quot;Código IATA do Aeródromo (3 Letras)&quot;</span>,</span>
-<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a>                      <span class="at">nome_aeroporto =</span> <span class="st">&quot;Nome oficial e completo do aeroporto&quot;</span>,</span>
-<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a>                      <span class="at">municipio =</span> <span class="st">&quot;Município onde o aeródromo está localizado&quot;</span>,</span>
-<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a>                      <span class="at">estado =</span> <span class="st">&quot;Unidade da Federação (UF)&quot;</span>,</span>
-<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a>                      <span class="at">pais =</span> <span class="st">&quot;País de localização&quot;</span>,</span>
-<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a>                      <span class="at">iso_a3 =</span> <span class="st">&quot;Código ISO-3 do País&quot;</span>,</span>
-<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a>                      <span class="at">aeronave_critica =</span> <span class="st">&quot;Aeronave crítica para dimensionamento da infraestrutura do aeródromo&quot;</span>,</span>
-<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a>                      <span class="at">latitude =</span> <span class="st">&quot;Latitude geográfica (graus decimais)&quot;</span>,</span>
-<span id="cb6-30"><a href="#cb6-30" tabindex="-1"></a>                      <span class="at">longitude =</span> <span class="st">&quot;Longitude geográfica (graus decimais)&quot;</span>)</span>
-<span id="cb6-31"><a href="#cb6-31" tabindex="-1"></a></span>
-<span id="cb6-32"><a href="#cb6-32" tabindex="-1"></a><span class="fu">rm</span>(pais_iso3)</span>
-<span id="cb6-33"><a href="#cb6-33" tabindex="-1"></a></span>
-<span id="cb6-34"><a href="#cb6-34" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">&quot;flights.parquet&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">icao_empresa =</span> sigla_icao_empresa_aa_c_rea,</span>
-<span id="cb6-36"><a href="#cb6-36" tabindex="-1"></a>         <span class="at">empresa =</span> empresa_aa_c_rea,</span>
-<span id="cb6-37"><a href="#cb6-37" tabindex="-1"></a>         <span class="at">num_voo =</span> n_aomero_voo,</span>
-<span id="cb6-38"><a href="#cb6-38" tabindex="-1"></a>         <span class="at">codigo_di =</span> ca3digo_di,</span>
-<span id="cb6-39"><a href="#cb6-39" tabindex="-1"></a>         <span class="at">codigo_tipo_linha =</span> ca3digo_tipo_linha,</span>
-<span id="cb6-40"><a href="#cb6-40" tabindex="-1"></a>         <span class="at">assentos =</span> n_aomero_de_assentos,</span>
-<span id="cb6-41"><a href="#cb6-41" tabindex="-1"></a>         <span class="at">origem_icao =</span> sigla_icao_aeroporto_origem,</span>
-<span id="cb6-42"><a href="#cb6-42" tabindex="-1"></a>         <span class="at">nome_origem =</span> descri_a_a_o_aeroporto_origem,</span>
-<span id="cb6-43"><a href="#cb6-43" tabindex="-1"></a>         <span class="at">destino_icao =</span> sigla_icao_aeroporto_destino,</span>
-<span id="cb6-44"><a href="#cb6-44" tabindex="-1"></a>         <span class="at">nome_destino =</span> descri_a_a_o_aeroporto_destino,</span>
-<span id="cb6-45"><a href="#cb6-45" tabindex="-1"></a>         <span class="at">situacao =</span> situa_a_a_o_voo,</span>
-<span id="cb6-46"><a href="#cb6-46" tabindex="-1"></a>         <span class="at">referencia =</span> refer_aancia,</span>
-<span id="cb6-47"><a href="#cb6-47" tabindex="-1"></a>         <span class="at">situacao_partida =</span> situa_a_a_o_partida,</span>
-<span id="cb6-48"><a href="#cb6-48" tabindex="-1"></a>         <span class="at">situacao_chegada =</span> situa_a_a_o_chegada) <span class="sc">|&gt;</span></span>
-<span id="cb6-49"><a href="#cb6-49" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">partida_prevista =</span> <span class="fu">dmy_hm</span>(partida_prevista),</span>
-<span id="cb6-50"><a href="#cb6-50" tabindex="-1"></a>         <span class="at">partida_real =</span> <span class="fu">dmy_hm</span>(partida_real),</span>
-<span id="cb6-51"><a href="#cb6-51" tabindex="-1"></a>         <span class="at">chegada_prevista =</span> <span class="fu">dmy_hm</span>(chegada_prevista),</span>
-<span id="cb6-52"><a href="#cb6-52" tabindex="-1"></a>         <span class="at">chegada_real =</span> <span class="fu">dmy_hm</span>(chegada_real),</span>
-<span id="cb6-53"><a href="#cb6-53" tabindex="-1"></a>         <span class="at">assentos =</span> <span class="fu">as.numeric</span>(assentos),</span>
-<span id="cb6-54"><a href="#cb6-54" tabindex="-1"></a>         <span class="at">atraso_partida_min =</span> <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(partida_real, partida_prevista, <span class="at">units =</span> <span class="st">&quot;mins&quot;</span>)),</span>
-<span id="cb6-55"><a href="#cb6-55" tabindex="-1"></a>         <span class="at">atraso_chegada_min =</span> <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(chegada_real, chegada_prevista, <span class="at">units =</span> <span class="st">&quot;mins&quot;</span>)),</span>
-<span id="cb6-56"><a href="#cb6-56" tabindex="-1"></a>         <span class="fu">across</span>(<span class="fu">where</span>(is.character), <span class="sc">~</span> {</span>
-<span id="cb6-57"><a href="#cb6-57" tabindex="-1"></a>           x <span class="ot">&lt;-</span> <span class="fu">iconv</span>(<span class="fu">as.character</span>(.x), <span class="at">from =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">to =</span> <span class="st">&quot;latin1&quot;</span>, <span class="at">sub =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb6-58"><a href="#cb6-58" tabindex="-1"></a>           <span class="fu">Encoding</span>(x) <span class="ot">&lt;-</span> <span class="st">&quot;UTF-8&quot;</span></span>
-<span id="cb6-59"><a href="#cb6-59" tabindex="-1"></a>           x</span>
-<span id="cb6-60"><a href="#cb6-60" tabindex="-1"></a>         })) <span class="sc">|&gt;</span></span>
-<span id="cb6-61"><a href="#cb6-61" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">icao_empresa =</span> <span class="st">&quot;Sigla ICAO da Empresa Aérea&quot;</span>,</span>
-<span id="cb6-62"><a href="#cb6-62" tabindex="-1"></a>                      <span class="at">empresa =</span> <span class="st">&quot;Nome da Empresa Aérea&quot;</span>,</span>
-<span id="cb6-63"><a href="#cb6-63" tabindex="-1"></a>                      <span class="at">num_voo =</span> <span class="st">&quot;Número de identificação do voo&quot;</span>,</span>
-<span id="cb6-64"><a href="#cb6-64" tabindex="-1"></a>                      <span class="at">codigo_di =</span> <span class="st">&quot;Código de Autorização de Voo (DI)&quot;</span>,</span>
-<span id="cb6-65"><a href="#cb6-65" tabindex="-1"></a>                      <span class="at">codigo_tipo_linha  =</span> <span class="st">&quot;Código do Tipo de Linha&quot;</span>,</span>
-<span id="cb6-66"><a href="#cb6-66" tabindex="-1"></a>                      <span class="at">modelo_equipamento =</span> <span class="st">&quot;Código do modelo da aeronave (Padrão ICAO)&quot;</span>,</span>
-<span id="cb6-67"><a href="#cb6-67" tabindex="-1"></a>                      <span class="at">assentos =</span> <span class="st">&quot;Quantidade de assentos comercializados&quot;</span>,</span>
-<span id="cb6-68"><a href="#cb6-68" tabindex="-1"></a>                      <span class="at">origem_icao =</span> <span class="st">&quot;Código ICAO do aeroporto de origem&quot;</span>,</span>
-<span id="cb6-69"><a href="#cb6-69" tabindex="-1"></a>                      <span class="at">nome_origem =</span> <span class="st">&quot;Nome oficial do aeroporto de origem&quot;</span>,</span>
-<span id="cb6-70"><a href="#cb6-70" tabindex="-1"></a>                      <span class="at">partida_prevista =</span> <span class="st">&quot;Data e hora previstas para a partida (Horário de Brasília)&quot;</span>,</span>
-<span id="cb6-71"><a href="#cb6-71" tabindex="-1"></a>                      <span class="at">partida_real =</span> <span class="st">&quot;Data e hora reais da partida (Horário de Brasília)&quot;</span>,</span>
-<span id="cb6-72"><a href="#cb6-72" tabindex="-1"></a>                      <span class="at">destino_icao =</span> <span class="st">&quot;Código ICAO do aeroporto de destino&quot;</span>,</span>
-<span id="cb6-73"><a href="#cb6-73" tabindex="-1"></a>                      <span class="at">nome_destino =</span> <span class="st">&quot;Nome oficial do aeroporto de destino&quot;</span>,</span>
-<span id="cb6-74"><a href="#cb6-74" tabindex="-1"></a>                      <span class="at">chegada_prevista =</span> <span class="st">&quot;Data e hora previstas para a chegada (Horário de Brasília)&quot;</span>,</span>
-<span id="cb6-75"><a href="#cb6-75" tabindex="-1"></a>                      <span class="at">chegada_real =</span> <span class="st">&quot;Data e hora reais da chegada (Horário de Brasília)&quot;</span>,</span>
-<span id="cb6-76"><a href="#cb6-76" tabindex="-1"></a>                      <span class="at">situacao =</span> <span class="st">&quot;Status final do voo (Realizado, Cancelado, etc)&quot;</span>,</span>
-<span id="cb6-77"><a href="#cb6-77" tabindex="-1"></a>                      <span class="at">justificativa =</span> <span class="st">&quot;Justificativa para atraso ou cancelamento do voo&quot;</span>,</span>
-<span id="cb6-78"><a href="#cb6-78" tabindex="-1"></a>                      <span class="at">referencia =</span> <span class="st">&quot;Data de referência do voo&quot;</span>,</span>
-<span id="cb6-79"><a href="#cb6-79" tabindex="-1"></a>                      <span class="at">situacao_partida =</span> <span class="st">&quot;Categoria do status de partida (Antecipado, Pontual, Atraso, etc)&quot;</span>,</span>
-<span id="cb6-80"><a href="#cb6-80" tabindex="-1"></a>                      <span class="at">situacao_chegada =</span> <span class="st">&quot;Categoria do status de chegada (Antecipado, Pontual, Atraso, etc)&quot;</span>,</span>
-<span id="cb6-81"><a href="#cb6-81" tabindex="-1"></a>                      <span class="at">atraso_partida_min =</span> <span class="st">&quot;Atraso na partida em minutos (Real - Previsto)&quot;</span>,</span>
-<span id="cb6-82"><a href="#cb6-82" tabindex="-1"></a>                      <span class="at">atraso_chegada_min =</span> <span class="st">&quot;Atraso na chegada em minutos (Real - Previsto)&quot;</span>)</span>
-<span id="cb6-83"><a href="#cb6-83" tabindex="-1"></a></span>
-<span id="cb6-84"><a href="#cb6-84" tabindex="-1"></a>planes <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">&quot;planes.parquet&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-85"><a href="#cb6-85" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">matricula =</span> marca,</span>
-<span id="cb6-86"><a href="#cb6-86" tabindex="-1"></a>         <span class="at">uf_proprietario =</span> sg_uf,</span>
-<span id="cb6-87"><a href="#cb6-87" tabindex="-1"></a>         <span class="at">cpf_cnpj_proprietario =</span> cpf_cnpj,</span>
-<span id="cb6-88"><a href="#cb6-88" tabindex="-1"></a>         <span class="at">operador =</span> nm_operador,</span>
-<span id="cb6-89"><a href="#cb6-89" tabindex="-1"></a>         <span class="at">cpf_cnpj_operador =</span> cpf_cgc,</span>
-<span id="cb6-90"><a href="#cb6-90" tabindex="-1"></a>         <span class="at">cert_matricula =</span> nr_cert_matricula,</span>
-<span id="cb6-91"><a href="#cb6-91" tabindex="-1"></a>         <span class="at">num_serie =</span> nr_serie,</span>
-<span id="cb6-92"><a href="#cb6-92" tabindex="-1"></a>         <span class="at">categoria =</span> cd_categoria,</span>
-<span id="cb6-93"><a href="#cb6-93" tabindex="-1"></a>         <span class="at">tipo =</span> cd_tipo,</span>
-<span id="cb6-94"><a href="#cb6-94" tabindex="-1"></a>         <span class="at">modelo =</span> ds_modelo,</span>
-<span id="cb6-95"><a href="#cb6-95" tabindex="-1"></a>         <span class="at">fabricante =</span> nm_fabricante,</span>
-<span id="cb6-96"><a href="#cb6-96" tabindex="-1"></a>         <span class="at">classe =</span> cd_cls,</span>
-<span id="cb6-97"><a href="#cb6-97" tabindex="-1"></a>         <span class="at">pmd =</span> nr_pmd,</span>
-<span id="cb6-98"><a href="#cb6-98" tabindex="-1"></a>         <span class="at">icao_tipo =</span> cd_tipo_icao,</span>
-<span id="cb6-99"><a href="#cb6-99" tabindex="-1"></a>         <span class="at">tripulacao_min =</span> nr_tripulacao_min,</span>
-<span id="cb6-100"><a href="#cb6-100" tabindex="-1"></a>         <span class="at">passageiros_max =</span> nr_passageiros_max,</span>
-<span id="cb6-101"><a href="#cb6-101" tabindex="-1"></a>         <span class="at">assentos =</span> nr_assentos,</span>
-<span id="cb6-102"><a href="#cb6-102" tabindex="-1"></a>         <span class="at">ano_fabricacao =</span> nr_ano_fabricacao,</span>
-<span id="cb6-103"><a href="#cb6-103" tabindex="-1"></a>         <span class="at">validade_iam =</span> dt_validade_iam,</span>
-<span id="cb6-104"><a href="#cb6-104" tabindex="-1"></a>         <span class="at">validade_ca =</span> dt_validade_ca,</span>
-<span id="cb6-105"><a href="#cb6-105" tabindex="-1"></a>         <span class="at">data_cancelamento =</span> dt_canc,</span>
-<span id="cb6-106"><a href="#cb6-106" tabindex="-1"></a>         <span class="at">motivo_cancelamento =</span> ds_motivo_canc,</span>
-<span id="cb6-107"><a href="#cb6-107" tabindex="-1"></a>         <span class="at">interdicao =</span> cd_interdicao,</span>
-<span id="cb6-108"><a href="#cb6-108" tabindex="-1"></a>         <span class="at">marca_nac1 =</span> cd_marca_nac1,</span>
-<span id="cb6-109"><a href="#cb6-109" tabindex="-1"></a>         <span class="at">marca_nac2 =</span> cd_marca_nac2,</span>
-<span id="cb6-110"><a href="#cb6-110" tabindex="-1"></a>         <span class="at">marca_nac3 =</span> cd_marca_nac3,</span>
-<span id="cb6-111"><a href="#cb6-111" tabindex="-1"></a>         <span class="at">marca_estrangeira =</span> cd_marca_estrangeira,</span>
-<span id="cb6-112"><a href="#cb6-112" tabindex="-1"></a>         <span class="at">gravame =</span> ds_gravame) <span class="sc">|&gt;</span></span>
-<span id="cb6-113"><a href="#cb6-113" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pmd =</span> <span class="fu">as.numeric</span>(pmd),</span>
-<span id="cb6-114"><a href="#cb6-114" tabindex="-1"></a>         <span class="at">tripulacao_min =</span> <span class="fu">as.numeric</span>(tripulacao_min),</span>
-<span id="cb6-115"><a href="#cb6-115" tabindex="-1"></a>         <span class="at">passageiros_max =</span> <span class="fu">as.numeric</span>(passageiros_max),</span>
-<span id="cb6-116"><a href="#cb6-116" tabindex="-1"></a>         <span class="at">assentos =</span> <span class="fu">as.numeric</span>(assentos),</span>
-<span id="cb6-117"><a href="#cb6-117" tabindex="-1"></a>         <span class="at">ano_fabricacao =</span> <span class="fu">as.numeric</span>(ano_fabricacao),</span>
-<span id="cb6-118"><a href="#cb6-118" tabindex="-1"></a>         <span class="at">matricula =</span> <span class="fu">str_replace</span>(matricula, <span class="st">&quot;^([A-Z]{2})([A-Z]{3})$&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1-</span><span class="sc">\\</span><span class="st">2&quot;</span>),</span>
-<span id="cb6-119"><a href="#cb6-119" tabindex="-1"></a>         <span class="at">validade_iam =</span> <span class="fu">dmy</span>(validade_iam),</span>
-<span id="cb6-120"><a href="#cb6-120" tabindex="-1"></a>         <span class="at">validade_ca =</span> <span class="fu">dmy</span>(validade_ca),</span>
-<span id="cb6-121"><a href="#cb6-121" tabindex="-1"></a>         <span class="at">data_cancelamento =</span> <span class="fu">as_date</span>(<span class="fu">ymd_hms</span>(data_cancelamento))) <span class="sc">|&gt;</span></span>
-<span id="cb6-122"><a href="#cb6-122" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">matricula =</span> <span class="st">&quot;Marca de Nacionalidade e Matrícula (ex: PR-GUK)&quot;</span>,</span>
-<span id="cb6-123"><a href="#cb6-123" tabindex="-1"></a>                      <span class="at">proprietario =</span> <span class="st">&quot;Nome do Proprietário da Aeronave&quot;</span>,</span>
-<span id="cb6-124"><a href="#cb6-124" tabindex="-1"></a>                      <span class="at">outros_proprietarios =</span> <span class="st">&quot;Nomes de outros proprietários registrados&quot;</span>,</span>
-<span id="cb6-125"><a href="#cb6-125" tabindex="-1"></a>                      <span class="at">uf_proprietario =</span> <span class="st">&quot;Unidade da Federação (UF) do proprietário&quot;</span>,</span>
-<span id="cb6-126"><a href="#cb6-126" tabindex="-1"></a>                      <span class="at">cpf_cnpj_proprietario =</span> <span class="st">&quot;CPF ou CNPJ do proprietário&quot;</span>,</span>
-<span id="cb6-127"><a href="#cb6-127" tabindex="-1"></a>                      <span class="at">operador =</span> <span class="st">&quot;Nome do Operador (Companhia Aérea, Táxi Aéreo, etc.)&quot;</span>,</span>
-<span id="cb6-128"><a href="#cb6-128" tabindex="-1"></a>                      <span class="at">outros_operadores =</span> <span class="st">&quot;Nomes de outros operadores registrados&quot;</span>,</span>
-<span id="cb6-129"><a href="#cb6-129" tabindex="-1"></a>                      <span class="at">uf_operador =</span> <span class="st">&quot;Unidade da Federação do Operador&quot;</span>,</span>
-<span id="cb6-130"><a href="#cb6-130" tabindex="-1"></a>                      <span class="at">cpf_cnpj_operador =</span> <span class="st">&quot;CPF ou CNPJ do operador&quot;</span>,</span>
-<span id="cb6-131"><a href="#cb6-131" tabindex="-1"></a>                      <span class="at">cert_matricula =</span> <span class="st">&quot;Número do Certificado de Matrícula&quot;</span>,</span>
-<span id="cb6-132"><a href="#cb6-132" tabindex="-1"></a>                      <span class="at">num_serie =</span> <span class="st">&quot;Número de série da aeronave&quot;</span>,</span>
-<span id="cb6-133"><a href="#cb6-133" tabindex="-1"></a>                      <span class="at">categoria =</span> <span class="st">&quot;Categoria de Registro (ex: TPR = Transporte Regular)&quot;</span>,</span>
-<span id="cb6-134"><a href="#cb6-134" tabindex="-1"></a>                      <span class="at">tipo =</span> <span class="st">&quot;Código do tipo de aeronave&quot;</span>,</span>
-<span id="cb6-135"><a href="#cb6-135" tabindex="-1"></a>                      <span class="at">modelo =</span> <span class="st">&quot;Designação do Modelo Comercial da Aeronave&quot;</span>,</span>
-<span id="cb6-136"><a href="#cb6-136" tabindex="-1"></a>                      <span class="at">fabricante =</span> <span class="st">&quot;Nome do Fabricante da Aeronave (ex: BOEING, AIRBUS)&quot;</span>,</span>
-<span id="cb6-137"><a href="#cb6-137" tabindex="-1"></a>                      <span class="at">classe =</span> <span class="st">&quot;Classe da aeronave&quot;</span>,</span>
-<span id="cb6-138"><a href="#cb6-138" tabindex="-1"></a>                      <span class="at">pmd =</span> <span class="st">&quot;Peso Máximo de Decolagem Aprovado (Kg)&quot;</span>,</span>
-<span id="cb6-139"><a href="#cb6-139" tabindex="-1"></a>                      <span class="at">icao_tipo =</span> <span class="st">&quot;Código de Tipo ICAO (Cruza com &#39;modelo_equipamento&#39; dos Voos)&quot;</span>,</span>
-<span id="cb6-140"><a href="#cb6-140" tabindex="-1"></a>                      <span class="at">tripulacao_min =</span> <span class="st">&quot;Quantidade mínima de tripulantes exigida&quot;</span>,</span>
-<span id="cb6-141"><a href="#cb6-141" tabindex="-1"></a>                      <span class="at">passageiros_max =</span> <span class="st">&quot;Número Máximo de Passageiros&quot;</span>,</span>
-<span id="cb6-142"><a href="#cb6-142" tabindex="-1"></a>                      <span class="at">assentos =</span> <span class="st">&quot;Número Máximo de Assentos Aprovados&quot;</span>,</span>
-<span id="cb6-143"><a href="#cb6-143" tabindex="-1"></a>                      <span class="at">ano_fabricacao =</span> <span class="st">&quot;Ano de Fabricação da Aeronave&quot;</span>,</span>
-<span id="cb6-144"><a href="#cb6-144" tabindex="-1"></a>                      <span class="at">validade_iam =</span> <span class="st">&quot;Data de Validade da Inspeção Anual de Manutenção (IAM)&quot;</span>,</span>
-<span id="cb6-145"><a href="#cb6-145" tabindex="-1"></a>                      <span class="at">validade_ca =</span> <span class="st">&quot;Data de Validade do Certificado de Aeronavegabilidade&quot;</span>,</span>
-<span id="cb6-146"><a href="#cb6-146" tabindex="-1"></a>                      <span class="at">data_cancelamento =</span> <span class="st">&quot;Data em que a matrícula foi cancelada&quot;</span>,</span>
-<span id="cb6-147"><a href="#cb6-147" tabindex="-1"></a>                      <span class="at">motivo_cancelamento =</span> <span class="st">&quot;Motivo do cancelamento da matrícula (se inativa)&quot;</span>,</span>
-<span id="cb6-148"><a href="#cb6-148" tabindex="-1"></a>                      <span class="at">interdicao =</span> <span class="st">&quot;Situação de Interdição (N = Não, M = Manutenção, etc.)&quot;</span>,</span>
-<span id="cb6-149"><a href="#cb6-149" tabindex="-1"></a>                      <span class="at">marca_nac1 =</span> <span class="st">&quot;Código de marca nacional anterior 1&quot;</span>,</span>
-<span id="cb6-150"><a href="#cb6-150" tabindex="-1"></a>                      <span class="at">marca_nac2 =</span> <span class="st">&quot;Código de marca nacional anterior 2&quot;</span>,</span>
-<span id="cb6-151"><a href="#cb6-151" tabindex="-1"></a>                      <span class="at">marca_nac3 =</span> <span class="st">&quot;Código de marca nacional anterior 3&quot;</span>,</span>
-<span id="cb6-152"><a href="#cb6-152" tabindex="-1"></a>                      <span class="at">marca_estrangeira =</span> <span class="st">&quot;Marca estrangeira anterior utilizada pela aeronave&quot;</span>,</span>
-<span id="cb6-153"><a href="#cb6-153" tabindex="-1"></a>                      <span class="at">gravame =</span> <span class="st">&quot;Descrição de gravames ou restrições financeiras e legais&quot;</span>)</span></code></pre></div>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a>  <span class="fu">select</span>(icao, iata, nome_aeroporto, municipio, estado, pais, iso_a3,</span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a>         aeronave_critica, latitude, longitude) <span class="sc">|&gt;</span></span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">icao =</span> <span class="st">&quot;Código ICAO do Aeródromo (4 Letras)&quot;</span>,</span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a>                      <span class="at">iata =</span> <span class="st">&quot;Código IATA do Aeródromo (3 Letras)&quot;</span>,</span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a>                      <span class="at">nome_aeroporto =</span> <span class="st">&quot;Nome oficial e completo do aeroporto&quot;</span>,</span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a>                      <span class="at">municipio =</span> <span class="st">&quot;Município onde o aeródromo está localizado&quot;</span>,</span>
+<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a>                      <span class="at">estado =</span> <span class="st">&quot;Unidade da Federação (UF)&quot;</span>,</span>
+<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a>                      <span class="at">pais =</span> <span class="st">&quot;País de localização&quot;</span>,</span>
+<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a>                      <span class="at">iso_a3 =</span> <span class="st">&quot;Código ISO-3 do País&quot;</span>,</span>
+<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a>                      <span class="at">aeronave_critica =</span> <span class="st">&quot;Aeronave crítica para dimensionamento da infraestrutura do aeródromo&quot;</span>,</span>
+<span id="cb6-30"><a href="#cb6-30" tabindex="-1"></a>                      <span class="at">latitude =</span> <span class="st">&quot;Latitude em graus decimais&quot;</span>,</span>
+<span id="cb6-31"><a href="#cb6-31" tabindex="-1"></a>                      <span class="at">longitude =</span> <span class="st">&quot;Longitude em graus decimais&quot;</span>)</span>
+<span id="cb6-32"><a href="#cb6-32" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" tabindex="-1"></a><span class="fu">rm</span>(pais_iso3)</span>
+<span id="cb6-34"><a href="#cb6-34" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a>flights <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">&quot;flights.parquet&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-36"><a href="#cb6-36" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">icao_empresa =</span> sigla_icao_empresa_aa_c_rea,</span>
+<span id="cb6-37"><a href="#cb6-37" tabindex="-1"></a>         <span class="at">empresa =</span> empresa_aa_c_rea,</span>
+<span id="cb6-38"><a href="#cb6-38" tabindex="-1"></a>         <span class="at">num_voo =</span> n_aomero_voo,</span>
+<span id="cb6-39"><a href="#cb6-39" tabindex="-1"></a>         <span class="at">codigo_di =</span> ca3digo_di,</span>
+<span id="cb6-40"><a href="#cb6-40" tabindex="-1"></a>         <span class="at">codigo_tipo_linha =</span> ca3digo_tipo_linha,</span>
+<span id="cb6-41"><a href="#cb6-41" tabindex="-1"></a>         <span class="at">assentos =</span> n_aomero_de_assentos,</span>
+<span id="cb6-42"><a href="#cb6-42" tabindex="-1"></a>         <span class="at">origem_icao =</span> sigla_icao_aeroporto_origem,</span>
+<span id="cb6-43"><a href="#cb6-43" tabindex="-1"></a>         <span class="at">nome_origem =</span> descri_a_a_o_aeroporto_origem,</span>
+<span id="cb6-44"><a href="#cb6-44" tabindex="-1"></a>         <span class="at">destino_icao =</span> sigla_icao_aeroporto_destino,</span>
+<span id="cb6-45"><a href="#cb6-45" tabindex="-1"></a>         <span class="at">nome_destino =</span> descri_a_a_o_aeroporto_destino,</span>
+<span id="cb6-46"><a href="#cb6-46" tabindex="-1"></a>         <span class="at">situacao =</span> situa_a_a_o_voo,</span>
+<span id="cb6-47"><a href="#cb6-47" tabindex="-1"></a>         <span class="at">referencia =</span> refer_aancia,</span>
+<span id="cb6-48"><a href="#cb6-48" tabindex="-1"></a>         <span class="at">situacao_partida =</span> situa_a_a_o_partida,</span>
+<span id="cb6-49"><a href="#cb6-49" tabindex="-1"></a>         <span class="at">situacao_chegada =</span> situa_a_a_o_chegada) <span class="sc">|&gt;</span></span>
+<span id="cb6-50"><a href="#cb6-50" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">partida_prevista =</span> <span class="fu">dmy_hm</span>(partida_prevista),</span>
+<span id="cb6-51"><a href="#cb6-51" tabindex="-1"></a>         <span class="at">partida_real =</span> <span class="fu">dmy_hm</span>(partida_real),</span>
+<span id="cb6-52"><a href="#cb6-52" tabindex="-1"></a>         <span class="at">chegada_prevista =</span> <span class="fu">dmy_hm</span>(chegada_prevista),</span>
+<span id="cb6-53"><a href="#cb6-53" tabindex="-1"></a>         <span class="at">chegada_real =</span> <span class="fu">dmy_hm</span>(chegada_real),</span>
+<span id="cb6-54"><a href="#cb6-54" tabindex="-1"></a>         <span class="at">assentos =</span> <span class="fu">as.numeric</span>(assentos),</span>
+<span id="cb6-55"><a href="#cb6-55" tabindex="-1"></a>         <span class="at">atraso_partida_min =</span> <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(partida_real, partida_prevista, <span class="at">units =</span> <span class="st">&quot;mins&quot;</span>)),</span>
+<span id="cb6-56"><a href="#cb6-56" tabindex="-1"></a>         <span class="at">atraso_chegada_min =</span> <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(chegada_real, chegada_prevista, <span class="at">units =</span> <span class="st">&quot;mins&quot;</span>)),</span>
+<span id="cb6-57"><a href="#cb6-57" tabindex="-1"></a>         <span class="fu">across</span>(<span class="fu">where</span>(is.character), <span class="sc">~</span> {</span>
+<span id="cb6-58"><a href="#cb6-58" tabindex="-1"></a>           x <span class="ot">&lt;-</span> <span class="fu">iconv</span>(<span class="fu">as.character</span>(.x), <span class="at">from =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">to =</span> <span class="st">&quot;latin1&quot;</span>, <span class="at">sub =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb6-59"><a href="#cb6-59" tabindex="-1"></a>           <span class="fu">Encoding</span>(x) <span class="ot">&lt;-</span> <span class="st">&quot;UTF-8&quot;</span></span>
+<span id="cb6-60"><a href="#cb6-60" tabindex="-1"></a>           x</span>
+<span id="cb6-61"><a href="#cb6-61" tabindex="-1"></a>         })) <span class="sc">|&gt;</span></span>
+<span id="cb6-62"><a href="#cb6-62" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">icao_empresa =</span> <span class="st">&quot;Sigla ICAO da Empresa Aérea&quot;</span>,</span>
+<span id="cb6-63"><a href="#cb6-63" tabindex="-1"></a>                      <span class="at">empresa =</span> <span class="st">&quot;Nome da Empresa Aérea&quot;</span>,</span>
+<span id="cb6-64"><a href="#cb6-64" tabindex="-1"></a>                      <span class="at">num_voo =</span> <span class="st">&quot;Número de identificação do voo&quot;</span>,</span>
+<span id="cb6-65"><a href="#cb6-65" tabindex="-1"></a>                      <span class="at">codigo_di =</span> <span class="st">&quot;Código de Autorização de Voo (DI)&quot;</span>,</span>
+<span id="cb6-66"><a href="#cb6-66" tabindex="-1"></a>                      <span class="at">codigo_tipo_linha  =</span> <span class="st">&quot;Código do Tipo de Linha&quot;</span>,</span>
+<span id="cb6-67"><a href="#cb6-67" tabindex="-1"></a>                      <span class="at">modelo_equipamento =</span> <span class="st">&quot;Código do modelo da aeronave (Padrão ICAO)&quot;</span>,</span>
+<span id="cb6-68"><a href="#cb6-68" tabindex="-1"></a>                      <span class="at">assentos =</span> <span class="st">&quot;Quantidade de assentos comercializados&quot;</span>,</span>
+<span id="cb6-69"><a href="#cb6-69" tabindex="-1"></a>                      <span class="at">origem_icao =</span> <span class="st">&quot;Código ICAO do aeroporto de origem&quot;</span>,</span>
+<span id="cb6-70"><a href="#cb6-70" tabindex="-1"></a>                      <span class="at">nome_origem =</span> <span class="st">&quot;Nome oficial do aeroporto de origem&quot;</span>,</span>
+<span id="cb6-71"><a href="#cb6-71" tabindex="-1"></a>                      <span class="at">partida_prevista =</span> <span class="st">&quot;Data e hora previstas para a partida (Horário de Brasília)&quot;</span>,</span>
+<span id="cb6-72"><a href="#cb6-72" tabindex="-1"></a>                      <span class="at">partida_real =</span> <span class="st">&quot;Data e hora reais da partida (Horário de Brasília)&quot;</span>,</span>
+<span id="cb6-73"><a href="#cb6-73" tabindex="-1"></a>                      <span class="at">destino_icao =</span> <span class="st">&quot;Código ICAO do aeroporto de destino&quot;</span>,</span>
+<span id="cb6-74"><a href="#cb6-74" tabindex="-1"></a>                      <span class="at">nome_destino =</span> <span class="st">&quot;Nome oficial do aeroporto de destino&quot;</span>,</span>
+<span id="cb6-75"><a href="#cb6-75" tabindex="-1"></a>                      <span class="at">chegada_prevista =</span> <span class="st">&quot;Data e hora previstas para a chegada (Horário de Brasília)&quot;</span>,</span>
+<span id="cb6-76"><a href="#cb6-76" tabindex="-1"></a>                      <span class="at">chegada_real =</span> <span class="st">&quot;Data e hora reais da chegada (Horário de Brasília)&quot;</span>,</span>
+<span id="cb6-77"><a href="#cb6-77" tabindex="-1"></a>                      <span class="at">situacao =</span> <span class="st">&quot;Status final do voo (Realizado, Cancelado, etc)&quot;</span>,</span>
+<span id="cb6-78"><a href="#cb6-78" tabindex="-1"></a>                      <span class="at">justificativa =</span> <span class="st">&quot;Justificativa para atraso ou cancelamento do voo&quot;</span>,</span>
+<span id="cb6-79"><a href="#cb6-79" tabindex="-1"></a>                      <span class="at">referencia =</span> <span class="st">&quot;Data de referência do voo&quot;</span>,</span>
+<span id="cb6-80"><a href="#cb6-80" tabindex="-1"></a>                      <span class="at">situacao_partida =</span> <span class="st">&quot;Categoria do status de partida (Antecipado, Pontual, Atraso, etc)&quot;</span>,</span>
+<span id="cb6-81"><a href="#cb6-81" tabindex="-1"></a>                      <span class="at">situacao_chegada =</span> <span class="st">&quot;Categoria do status de chegada (Antecipado, Pontual, Atraso, etc)&quot;</span>,</span>
+<span id="cb6-82"><a href="#cb6-82" tabindex="-1"></a>                      <span class="at">atraso_partida_min =</span> <span class="st">&quot;Atraso na partida em minutos (Real - Previsto)&quot;</span>,</span>
+<span id="cb6-83"><a href="#cb6-83" tabindex="-1"></a>                      <span class="at">atraso_chegada_min =</span> <span class="st">&quot;Atraso na chegada em minutos (Real - Previsto)&quot;</span>)</span>
+<span id="cb6-84"><a href="#cb6-84" tabindex="-1"></a></span>
+<span id="cb6-85"><a href="#cb6-85" tabindex="-1"></a>planes <span class="ot">&lt;-</span> <span class="fu">read_parquet</span>(<span class="st">&quot;planes.parquet&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-86"><a href="#cb6-86" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">matricula =</span> marca,</span>
+<span id="cb6-87"><a href="#cb6-87" tabindex="-1"></a>         <span class="at">uf_proprietario =</span> sg_uf,</span>
+<span id="cb6-88"><a href="#cb6-88" tabindex="-1"></a>         <span class="at">cpf_cnpj_proprietario =</span> cpf_cnpj,</span>
+<span id="cb6-89"><a href="#cb6-89" tabindex="-1"></a>         <span class="at">operador =</span> nm_operador,</span>
+<span id="cb6-90"><a href="#cb6-90" tabindex="-1"></a>         <span class="at">cpf_cnpj_operador =</span> cpf_cgc,</span>
+<span id="cb6-91"><a href="#cb6-91" tabindex="-1"></a>         <span class="at">cert_matricula =</span> nr_cert_matricula,</span>
+<span id="cb6-92"><a href="#cb6-92" tabindex="-1"></a>         <span class="at">num_serie =</span> nr_serie,</span>
+<span id="cb6-93"><a href="#cb6-93" tabindex="-1"></a>         <span class="at">categoria =</span> cd_categoria,</span>
+<span id="cb6-94"><a href="#cb6-94" tabindex="-1"></a>         <span class="at">tipo =</span> cd_tipo,</span>
+<span id="cb6-95"><a href="#cb6-95" tabindex="-1"></a>         <span class="at">modelo =</span> ds_modelo,</span>
+<span id="cb6-96"><a href="#cb6-96" tabindex="-1"></a>         <span class="at">fabricante =</span> nm_fabricante,</span>
+<span id="cb6-97"><a href="#cb6-97" tabindex="-1"></a>         <span class="at">classe =</span> cd_cls,</span>
+<span id="cb6-98"><a href="#cb6-98" tabindex="-1"></a>         <span class="at">pmd =</span> nr_pmd,</span>
+<span id="cb6-99"><a href="#cb6-99" tabindex="-1"></a>         <span class="at">icao_tipo =</span> cd_tipo_icao,</span>
+<span id="cb6-100"><a href="#cb6-100" tabindex="-1"></a>         <span class="at">tripulacao_min =</span> nr_tripulacao_min,</span>
+<span id="cb6-101"><a href="#cb6-101" tabindex="-1"></a>         <span class="at">passageiros_max =</span> nr_passageiros_max,</span>
+<span id="cb6-102"><a href="#cb6-102" tabindex="-1"></a>         <span class="at">assentos =</span> nr_assentos,</span>
+<span id="cb6-103"><a href="#cb6-103" tabindex="-1"></a>         <span class="at">ano_fabricacao =</span> nr_ano_fabricacao,</span>
+<span id="cb6-104"><a href="#cb6-104" tabindex="-1"></a>         <span class="at">validade_iam =</span> dt_validade_iam,</span>
+<span id="cb6-105"><a href="#cb6-105" tabindex="-1"></a>         <span class="at">validade_ca =</span> dt_validade_ca,</span>
+<span id="cb6-106"><a href="#cb6-106" tabindex="-1"></a>         <span class="at">data_cancelamento =</span> dt_canc,</span>
+<span id="cb6-107"><a href="#cb6-107" tabindex="-1"></a>         <span class="at">motivo_cancelamento =</span> ds_motivo_canc,</span>
+<span id="cb6-108"><a href="#cb6-108" tabindex="-1"></a>         <span class="at">interdicao =</span> cd_interdicao,</span>
+<span id="cb6-109"><a href="#cb6-109" tabindex="-1"></a>         <span class="at">marca_nac1 =</span> cd_marca_nac1,</span>
+<span id="cb6-110"><a href="#cb6-110" tabindex="-1"></a>         <span class="at">marca_nac2 =</span> cd_marca_nac2,</span>
+<span id="cb6-111"><a href="#cb6-111" tabindex="-1"></a>         <span class="at">marca_nac3 =</span> cd_marca_nac3,</span>
+<span id="cb6-112"><a href="#cb6-112" tabindex="-1"></a>         <span class="at">marca_estrangeira =</span> cd_marca_estrangeira,</span>
+<span id="cb6-113"><a href="#cb6-113" tabindex="-1"></a>         <span class="at">gravame =</span> ds_gravame) <span class="sc">|&gt;</span></span>
+<span id="cb6-114"><a href="#cb6-114" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pmd =</span> <span class="fu">as.numeric</span>(pmd),</span>
+<span id="cb6-115"><a href="#cb6-115" tabindex="-1"></a>         <span class="at">tripulacao_min =</span> <span class="fu">as.numeric</span>(tripulacao_min),</span>
+<span id="cb6-116"><a href="#cb6-116" tabindex="-1"></a>         <span class="at">passageiros_max =</span> <span class="fu">as.numeric</span>(passageiros_max),</span>
+<span id="cb6-117"><a href="#cb6-117" tabindex="-1"></a>         <span class="at">assentos =</span> <span class="fu">as.numeric</span>(assentos),</span>
+<span id="cb6-118"><a href="#cb6-118" tabindex="-1"></a>         <span class="at">ano_fabricacao =</span> <span class="fu">as.numeric</span>(ano_fabricacao),</span>
+<span id="cb6-119"><a href="#cb6-119" tabindex="-1"></a>         <span class="at">matricula =</span> <span class="fu">str_replace</span>(matricula, <span class="st">&quot;^([A-Z]{2})([A-Z]{3})$&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1-</span><span class="sc">\\</span><span class="st">2&quot;</span>),</span>
+<span id="cb6-120"><a href="#cb6-120" tabindex="-1"></a>         <span class="at">validade_iam =</span> <span class="fu">dmy</span>(validade_iam),</span>
+<span id="cb6-121"><a href="#cb6-121" tabindex="-1"></a>         <span class="at">validade_ca =</span> <span class="fu">dmy</span>(validade_ca),</span>
+<span id="cb6-122"><a href="#cb6-122" tabindex="-1"></a>         <span class="at">data_cancelamento =</span> <span class="fu">as_date</span>(<span class="fu">ymd_hms</span>(data_cancelamento))) <span class="sc">|&gt;</span></span>
+<span id="cb6-123"><a href="#cb6-123" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">matricula =</span> <span class="st">&quot;Marca de Nacionalidade e Matrícula (ex: PR-GUK)&quot;</span>,</span>
+<span id="cb6-124"><a href="#cb6-124" tabindex="-1"></a>                      <span class="at">proprietario =</span> <span class="st">&quot;Nome do Proprietário da Aeronave&quot;</span>,</span>
+<span id="cb6-125"><a href="#cb6-125" tabindex="-1"></a>                      <span class="at">outros_proprietarios =</span> <span class="st">&quot;Nomes de outros proprietários registrados&quot;</span>,</span>
+<span id="cb6-126"><a href="#cb6-126" tabindex="-1"></a>                      <span class="at">uf_proprietario =</span> <span class="st">&quot;Unidade da Federação (UF) do proprietário&quot;</span>,</span>
+<span id="cb6-127"><a href="#cb6-127" tabindex="-1"></a>                      <span class="at">cpf_cnpj_proprietario =</span> <span class="st">&quot;CPF ou CNPJ do proprietário&quot;</span>,</span>
+<span id="cb6-128"><a href="#cb6-128" tabindex="-1"></a>                      <span class="at">operador =</span> <span class="st">&quot;Nome do Operador (Companhia Aérea, Táxi Aéreo, etc.)&quot;</span>,</span>
+<span id="cb6-129"><a href="#cb6-129" tabindex="-1"></a>                      <span class="at">outros_operadores =</span> <span class="st">&quot;Nomes de outros operadores registrados&quot;</span>,</span>
+<span id="cb6-130"><a href="#cb6-130" tabindex="-1"></a>                      <span class="at">uf_operador =</span> <span class="st">&quot;Unidade da Federação do Operador&quot;</span>,</span>
+<span id="cb6-131"><a href="#cb6-131" tabindex="-1"></a>                      <span class="at">cpf_cnpj_operador =</span> <span class="st">&quot;CPF ou CNPJ do operador&quot;</span>,</span>
+<span id="cb6-132"><a href="#cb6-132" tabindex="-1"></a>                      <span class="at">cert_matricula =</span> <span class="st">&quot;Número do Certificado de Matrícula&quot;</span>,</span>
+<span id="cb6-133"><a href="#cb6-133" tabindex="-1"></a>                      <span class="at">num_serie =</span> <span class="st">&quot;Número de série da aeronave&quot;</span>,</span>
+<span id="cb6-134"><a href="#cb6-134" tabindex="-1"></a>                      <span class="at">categoria =</span> <span class="st">&quot;Categoria de Registro (ex: TPR = Transporte Regular)&quot;</span>,</span>
+<span id="cb6-135"><a href="#cb6-135" tabindex="-1"></a>                      <span class="at">tipo =</span> <span class="st">&quot;Código do tipo de aeronave&quot;</span>,</span>
+<span id="cb6-136"><a href="#cb6-136" tabindex="-1"></a>                      <span class="at">modelo =</span> <span class="st">&quot;Designação do Modelo Comercial da Aeronave&quot;</span>,</span>
+<span id="cb6-137"><a href="#cb6-137" tabindex="-1"></a>                      <span class="at">fabricante =</span> <span class="st">&quot;Nome do Fabricante da Aeronave (ex: BOEING, AIRBUS)&quot;</span>,</span>
+<span id="cb6-138"><a href="#cb6-138" tabindex="-1"></a>                      <span class="at">classe =</span> <span class="st">&quot;Classe da aeronave&quot;</span>,</span>
+<span id="cb6-139"><a href="#cb6-139" tabindex="-1"></a>                      <span class="at">pmd =</span> <span class="st">&quot;Peso Máximo de Decolagem Aprovado (Kg)&quot;</span>,</span>
+<span id="cb6-140"><a href="#cb6-140" tabindex="-1"></a>                      <span class="at">icao_tipo =</span> <span class="st">&quot;Código de Tipo ICAO (Cruza com &#39;modelo_equipamento&#39; dos Voos)&quot;</span>,</span>
+<span id="cb6-141"><a href="#cb6-141" tabindex="-1"></a>                      <span class="at">tripulacao_min =</span> <span class="st">&quot;Quantidade mínima de tripulantes exigida&quot;</span>,</span>
+<span id="cb6-142"><a href="#cb6-142" tabindex="-1"></a>                      <span class="at">passageiros_max =</span> <span class="st">&quot;Número Máximo de Passageiros&quot;</span>,</span>
+<span id="cb6-143"><a href="#cb6-143" tabindex="-1"></a>                      <span class="at">assentos =</span> <span class="st">&quot;Número Máximo de Assentos Aprovados&quot;</span>,</span>
+<span id="cb6-144"><a href="#cb6-144" tabindex="-1"></a>                      <span class="at">ano_fabricacao =</span> <span class="st">&quot;Ano de Fabricação da Aeronave&quot;</span>,</span>
+<span id="cb6-145"><a href="#cb6-145" tabindex="-1"></a>                      <span class="at">validade_iam =</span> <span class="st">&quot;Data de Validade da Inspeção Anual de Manutenção (IAM)&quot;</span>,</span>
+<span id="cb6-146"><a href="#cb6-146" tabindex="-1"></a>                      <span class="at">validade_ca =</span> <span class="st">&quot;Data de Validade do Certificado de Aeronavegabilidade&quot;</span>,</span>
+<span id="cb6-147"><a href="#cb6-147" tabindex="-1"></a>                      <span class="at">data_cancelamento =</span> <span class="st">&quot;Data em que a matrícula foi cancelada&quot;</span>,</span>
+<span id="cb6-148"><a href="#cb6-148" tabindex="-1"></a>                      <span class="at">motivo_cancelamento =</span> <span class="st">&quot;Motivo do cancelamento da matrícula (se inativa)&quot;</span>,</span>
+<span id="cb6-149"><a href="#cb6-149" tabindex="-1"></a>                      <span class="at">interdicao =</span> <span class="st">&quot;Situação de Interdição (N = Não, M = Manutenção, etc.)&quot;</span>,</span>
+<span id="cb6-150"><a href="#cb6-150" tabindex="-1"></a>                      <span class="at">marca_nac1 =</span> <span class="st">&quot;Código de marca nacional anterior 1&quot;</span>,</span>
+<span id="cb6-151"><a href="#cb6-151" tabindex="-1"></a>                      <span class="at">marca_nac2 =</span> <span class="st">&quot;Código de marca nacional anterior 2&quot;</span>,</span>
+<span id="cb6-152"><a href="#cb6-152" tabindex="-1"></a>                      <span class="at">marca_nac3 =</span> <span class="st">&quot;Código de marca nacional anterior 3&quot;</span>,</span>
+<span id="cb6-153"><a href="#cb6-153" tabindex="-1"></a>                      <span class="at">marca_estrangeira =</span> <span class="st">&quot;Marca estrangeira anterior utilizada pela aeronave&quot;</span>,</span>
+<span id="cb6-154"><a href="#cb6-154" tabindex="-1"></a>                      <span class="at">gravame =</span> <span class="st">&quot;Descrição de gravames ou restrições financeiras e legais&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="tópico-base-analítica-e-qualidade-dos-dados" class="section level1" number="5">
